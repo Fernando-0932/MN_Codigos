@@ -1,0 +1,97 @@
+Entrada:
+  n ← número de ecuaciones
+  A[n][n] ← matriz de coeficientes
+  b[n] ← vector de términos independientes
+  tol ← tolerancia para el error
+  max_iter ← máximo número de iteraciones
+
+Inicio
+  // Paso 1: Eliminación hacia adelante
+  Para k desde 0 hasta n-1
+    Para i desde k+1 hasta n-1
+      factor ← A[i][k] / A[k][k]
+      Para j desde k hasta n-1
+        A[i][j] ← A[i][j] - factor * A[k][j]
+      FinPara
+      b[i] ← b[i] - factor * b[k]
+    FinPara
+  FinPara
+
+  // Paso 2: Sustitución hacia atrás
+  Crear x[n]
+  Para i desde n-1 hasta 0 con paso -1
+    suma ← 0
+    Para j desde i+1 hasta n-1
+      suma ← suma + A[i][j] * x[j]
+    FinPara
+    x[i] ← (b[i] - suma) / A[i][i]
+  FinPara
+
+  Mostrar x[]
+Fin
+
+Inicio
+  // Reducción completa a matriz identidad
+  Para i desde 0 hasta n-1
+    pivote ← A[i][i]
+    Para j desde 0 hasta n-1
+      A[i][j] ← A[i][j] / pivote
+    FinPara
+    b[i] ← b[i] / pivote
+
+    Para k desde 0 hasta n-1
+      Si k ≠ i Entonces
+        factor ← A[k][i]
+        Para j desde 0 hasta n-1
+          A[k][j] ← A[k][j] - factor * A[i][j]
+        FinPara
+        b[k] ← b[k] - factor * b[i]
+      FinSi
+    FinPara
+  FinPara
+
+  x ← b
+  Mostrar x[]
+Fin
+
+Inicio
+  Entrada: x0[n] ← vector inicial
+  Crear x1[n]
+  Repetir hasta cumplir tolerancia o max_iter
+    Para i desde 0 hasta n-1
+      suma ← 0
+      Para j desde 0 hasta n-1
+        Si j ≠ i Entonces
+          suma ← suma + A[i][j] * x0[j]
+        FinSi
+      FinPara
+      x1[i] ← (b[i] - suma) / A[i][i]
+    FinPara
+
+    error ← max|x1[i] - x0[i]|
+    x0 ← x1
+  Fin Repetir
+
+  Mostrar x1[]
+Fin
+
+Inicio
+  Entrada: x[n] ← vector inicial
+  Repetir hasta cumplir tolerancia o max_iter
+    Crear x_ant[n] ← copia de x
+    Para i desde 0 hasta n-1
+      suma ← 0
+      Para j desde 0 hasta n-1
+        Si j ≠ i Entonces
+          suma ← suma + A[i][j] * x[j]
+        FinSi
+      FinPara
+      x[i] ← (b[i] - suma) / A[i][i]
+    FinPara
+
+    error ← max|x[i] - x_ant[i]|
+  Fin Repetir
+
+  Mostrar x[]
+Fin
+
