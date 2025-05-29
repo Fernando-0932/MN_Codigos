@@ -1,0 +1,46 @@
+#Método de Euler
+Entrada: f(x, y), x0, y0, h, n
+Para i desde 0 hasta n-1 hacer:
+    y = y + h * f(x, y)
+    x = x + h
+Fin Para
+Salida: y
+
+#Método de Taylor
+Entrada: f(x, y), f'(x, y), x0, y0, h, n
+Para i desde 0 hasta n-1 hacer:
+    y = y + h * f(x, y) + (h^2 / 2) * f'(x, y)
+    x = x + h
+Fin Para
+Salida: y
+
+Método de Runge-Kutta
+Entrada: f(x, y), x0, y0, h, n
+Para i desde 0 hasta n-1 hacer:
+    k1 = f(x, y)
+    k2 = f(x + h/2, y + h*k1/2)
+    k3 = f(x + h/2, y + h*k2/2)
+    k4 = f(x + h, y + h*k3)
+    y = y + (h/6)*(k1 + 2*k2 + 2*k3 + k4)
+    x = x + h
+Fin Para
+Salida: y
+
+Método de paso múltiple
+Entrada: f(x, y), valores iniciales x0...x3, y0...y3, h, n
+Para i desde 3 hasta n-1 hacer:
+    y_next = y[i] + (h/24) * (55*f(x[i], y[i]) - 59*f(x[i-1], y[i-1]) +
+                              37*f(x[i-2], y[i-2]) - 9*f(x[i-3], y[i-3]))
+    x_next = x[i] + h
+    Almacenar x_next, y_next
+Fin Para
+Salida: y
+
+Método de Euler para Sistemas de EDOs
+Entrada: funciones f1, f2, ..., fm, x0, y1_0, y2_0, ..., ym_0, h, n
+Para i desde 0 hasta n-1 hacer:
+    Para j desde 1 hasta m hacer:
+        y[j] = y[j] + h * fj(x, y[1], ..., y[m])
+    x = x + h
+Fin Para
+Salida: y[1], ..., y[m]
