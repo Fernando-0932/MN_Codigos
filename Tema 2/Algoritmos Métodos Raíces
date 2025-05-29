@@ -1,0 +1,83 @@
+Inicio
+  Definir función f(x)
+  Definir derivada f'(x) si se usa Newton-Raphson
+  Definir función g(x) si se usa Punto Fijo
+  Entrada: método, tolerancia ε, iteraciones_max, valores iniciales
+
+  Si método = "Bisección" Entonces
+    Entrada: a, b
+    Si f(a) * f(b) ≥ 0 Entonces
+      Mostrar "No se garantiza raíz en el intervalo"
+    Sino
+      Repetir hasta cumplir tolerancia o iteraciones
+        c ← (a + b)/2
+        Si f(c) = 0 o |f(c)| < ε Entonces
+          Salir
+        FinSi
+        Si f(a)*f(c) < 0 Entonces
+          b ← c
+        Sino
+          a ← c
+        FinSi
+      Fin Repetir
+    FinSi
+
+  Sino Si método = "Regla Falsa" Entonces
+    Entrada: a, b
+    Si f(a)*f(b) ≥ 0 Entonces
+      Mostrar "No se garantiza raíz en el intervalo"
+    Sino
+      Repetir hasta cumplir tolerancia o iteraciones
+        c ← (a*f(b) - b*f(a)) / (f(b) - f(a))
+        Si f(c) = 0 o |f(c)| < ε Entonces
+          Salir
+        FinSi
+        Si f(a)*f(c) < 0 Entonces
+          b ← c
+        Sino
+          a ← c
+        FinSi
+      Fin Repetir
+    FinSi
+
+  Sino Si método = "Punto Fijo" Entonces
+    Entrada: x0
+    Repetir hasta cumplir tolerancia o iteraciones
+      x1 ← g(x0)
+      error ← |x1 - x0|
+      x0 ← x1
+    Fin Repetir
+
+  Sino Si método = "Newton-Raphson" Entonces
+    Entrada: x0
+    Repetir hasta cumplir tolerancia o iteraciones
+      fx ← f(x0)
+      dfx ← f'(x0)
+      Si dfx = 0 Entonces
+        Mostrar "Derivada cero. Método falla."
+        Salir
+      FinSi
+      x1 ← x0 - fx / dfx
+      error ← |x1 - x0|
+      x0 ← x1
+    Fin Repetir
+
+  Sino Si método = "Secante" Entonces
+    Entrada: x0, x1
+    Repetir hasta cumplir tolerancia o iteraciones
+      fx0 ← f(x0)
+      fx1 ← f(x1)
+      Si fx1 - fx0 = 0 Entonces
+        Mostrar "División por cero. Método falla."
+        Salir
+      FinSi
+      x2 ← x1 - fx1 * (x1 - x0) / (fx1 - fx0)
+      error ← |x2 - x1|
+      x0 ← x1
+      x1 ← x2
+    Fin Repetir
+  FinSi
+
+  Mostrar resultado y número de iteraciones
+
+Fin
