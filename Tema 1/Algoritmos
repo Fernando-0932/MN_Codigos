@@ -1,0 +1,27 @@
+Inicio
+  Entrada: valor_real, valor_aproximado, decimales
+
+  // 1. Calcular Error Absoluto
+  error_absoluto ← |valor_real - valor_aproximado|
+
+  // 2. Calcular Error Relativo
+  Si valor_real ≠ 0 Entonces
+    error_relativo ← error_absoluto / |valor_real|
+  Sino
+    error_relativo ← "Indeterminado (división por cero)"
+  FinSi
+
+  // 3. Calcular Error por Redondeo
+  valor_redondeado ← Redondear(valor_real, decimales)
+  error_redondeo ← |valor_real - valor_redondeado|
+
+  // 4. Calcular Error de Truncamiento
+  valor_truncado ← Truncar(valor_real, decimales)
+  error_truncamiento ← |valor_real - valor_truncado|
+
+  // Salidas
+  Mostrar "Error Absoluto: ", error_absoluto
+  Mostrar "Error Relativo: ", error_relativo
+  Mostrar "Error de Redondeo: ", error_redondeo
+  Mostrar "Error de Truncamiento: ", error_truncamiento
+Fin
