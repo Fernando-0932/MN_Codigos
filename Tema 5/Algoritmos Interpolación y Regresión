@@ -1,0 +1,77 @@
+Inicio
+  Entrada: (x0, y0), (x1, y1) → dos puntos conocidos
+  Entrada: x → valor a interpolar
+
+  f(x) ← y0 + ((y1 - y0) / (x1 - x0)) * (x - x0)
+
+  Mostrar f(x)
+Fin
+
+Inicio
+  Entrada: n puntos (x[0..n-1], y[0..n-1])
+  Entrada: x_eval → valor a interpolar
+
+  Crear tabla de diferencias divididas D[n][n]
+  Para i desde 0 hasta n-1
+    D[i][0] ← y[i]
+  FinPara
+
+  Para j desde 1 hasta n-1
+    Para i desde 0 hasta n-j-1
+      D[i][j] ← (D[i+1][j-1] - D[i][j-1]) / (x[i+j] - x[i])
+    FinPara
+  FinPara
+
+  // Evaluar el polinomio en x_eval
+  result ← D[0][0]
+  producto ← 1
+  Para i desde 1 hasta n-1
+    producto ← producto * (x_eval - x[i-1])
+    result ← result + D[0][i] * producto
+  FinPara
+
+  Mostrar result
+Fin
+
+Inicio
+  Entrada: vectores x[0..n-1], y[0..n-1]
+  suma_x ← suma_y ← suma_xy ← suma_x2 ← 0
+
+  Para i desde 0 hasta n-1
+    suma_x ← suma_x + x[i]
+    suma_y ← suma_y + y[i]
+    suma_xy ← suma_xy + x[i]*y[i]
+    suma_x2 ← suma_x2 + x[i]*x[i]
+  FinPara
+
+  n ← tamaño de los vectores
+  b ← (n * suma_xy - suma_x * suma_y) / (n * suma_x2 - suma_x^2)
+  a ← (suma_y - b * suma_x) / n
+
+  Mostrar "Recta ajustada: y = ", a, "+", b, "*x"
+Fin
+
+Inicio
+  Entrada: vectores x[0..n-1], y[0..n-1]
+  suma_x ← suma_y ← suma_xy ← suma_x2 ← suma_y2 ← 0
+
+  Para i desde 0 hasta n-1
+    suma_x ← suma_x + x[i]
+    suma_y ← suma_y + y[i]
+    suma_xy ← suma_xy + x[i]*y[i]
+    suma_x2 ← suma_x2 + x[i]^2
+    suma_y2 ← suma_y2 + y[i]^2
+  FinPara
+
+  n ← tamaño de los vectores
+  numerador ← n * suma_xy - suma_x * suma_y
+  denominador ← sqrt((n*suma_x2 - suma_x^2) * (n*suma_y2 - suma_y^2))
+
+  Si denominador = 0 Entonces
+    Mostrar "Correlación indefinida (división por cero)"
+  Sino
+    r ← numerador / denominador
+    Mostrar "Coeficiente de correlación: ", r
+  FinSi
+Fin
+
