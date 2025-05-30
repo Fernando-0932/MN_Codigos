@@ -1,0 +1,77 @@
+Introducción a los Métodos Numéricos
+
+Los métodos numéricos son un conjunto de técnicas matemáticas utilizadas para obtener soluciones aproximadas a problemas complejos que no pueden resolverse de forma exacta mediante métodos analíticos. Estas herramientas son fundamentales en ingeniería, ciencias computacionales, física, economía y otras disciplinas donde se requiere modelar, simular o resolver problemas matemáticos en contextos reales.
+
+A continuación, se presenta una descripción de los principales temas que abarca el estudio de los métodos numéricos.
+
+1. Tipos de errores
+
+En todo proceso numérico, los errores son inevitables. Conocer sus tipos y características es esencial para evaluar la precisión de los resultados. Entre los errores más comunes se encuentran:
+
+Error absoluto: Diferencia entre el valor exacto y el valor aproximado.
+
+Error relativo: Relación entre el error absoluto y el valor exacto. Es útil para comparar errores en diferentes magnitudes.
+
+Error de truncamiento: Surge cuando se sustituye una expresión infinita (como una serie) por una versión finita.
+
+Error de redondeo: Resultado de la representación finita de los números en las computadoras.
+
+Error de propagación: Ocurre cuando los errores se acumulan a lo largo de varios cálculos.
+
+2. Métodos de Raíces
+
+Estos métodos permiten encontrar soluciones de ecuaciones no lineales de la forma . Son de gran utilidad cuando las soluciones exactas no se pueden obtener analíticamente. Algunos de los métodos más utilizados son:
+
+Método de bisección
+
+Método de Newton-Raphson
+
+Método de la secante
+
+Método del punto fijo
+
+Método de la falsa posición
+
+3. Métodos para Sistemas de Ecuaciones
+
+Estos métodos se utilizan para resolver sistemas lineales de la forma , donde  es una matriz de coeficientes y  es el vector de incógnitas. Pueden clasificarse en:
+
+Métodos directos: como la eliminación de Gauss y la descomposición LU.
+
+Métodos iterativos: como los métodos de Jacobi, Gauss-Seidel y SOR.
+
+Estos métodos son esenciales en aplicaciones de simulación, análisis estructural, circuitos eléctricos, entre otros.
+
+4. Métodos de Integración
+
+Permiten calcular integrales definidas de funciones cuando no se dispone de una solución analítica. Entre los más utilizados están:
+
+Regla del trapecio
+
+Regla de Simpson (1/3 y 3/8)
+
+Cuadratura de Gauss
+
+Son ampliamente aplicados en cálculos de áreas, volúmenes, trabajo mecánico y energía.
+
+5. Interpolación y Regresión
+
+Interpolación: Se utiliza para estimar valores intermedios a partir de un conjunto de datos conocidos. Ejemplos de métodos incluyen interpolación lineal, de Lagrange, Newton y splines.
+
+Regresión: Permite ajustar una función a un conjunto de datos con ruido. La regresión lineal es una de las técnicas más utilizadas en estadística y análisis de datos.
+
+6. Sistemas de Ecuaciones Diferenciales Ordinarias (EDO)
+
+Estos métodos se usan para resolver ecuaciones diferenciales que modelan procesos dinámicos como movimiento, crecimiento poblacional, reacciones químicas, etc. Algunos métodos comunes son:
+
+Método de Euler
+
+Método de Taylor
+
+Método de Runge-Kutta
+
+Métodos de pasos múltiples
+
+Estos permiten aproximar la solución de una EDO cuando no es posible obtenerla de manera analítica.
+
+En conjunto, los métodos numéricos proporcionan las bases para resolver problemas matemáticos complejos usando herramientas computacionales, y son fundamentales para el desarrollo de tecnología moderna y simulaciones precisas en la ingeniería y las ciencias.
